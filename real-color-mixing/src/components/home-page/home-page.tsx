@@ -14,7 +14,7 @@ export class HomePage {
   
   @State() secondaryColor?: RGB;
 
-  @State() resultColor?: RGB = { red: 0, green: 0, blue: 0 };
+  @State() resultColors?: RGB[] = [{ red: 0, green: 0, blue: 0 }];
 
   private onColorPickerChange = (event: CustomEvent<RGBEvent>) => {
     const { rgb, id } = event.detail;
@@ -29,7 +29,11 @@ export class HomePage {
         break;
     }
     if (this.dominantColor !== undefined && this.secondaryColor !== undefined) {
-      this.resultColor = kubelkaMunk(this.dominantColor, this.secondaryColor);
+      this.resultColors = [];
+      for (let i = 1; i < 4; i += 1) {
+        console.log(kubelkaMunk(this.dominantColor, this.secondaryColor, i * (1/4) ));
+        this.resultColors.push(kubelkaMunk(this.dominantColor, this.secondaryColor, i * (1/4) ));
+      }
     }
   }
 
@@ -42,8 +46,14 @@ export class HomePage {
             label="Dominant Color"
             onColorPickerValueChange={(e) => this.onColorPickerChange(e)}
           ></color-picker>
-          <color-swatch value={this.resultColor}>
-          </color-swatch>
+          {
+            this.resultColors.map((color: RGB) => {
+              return (
+                <color-swatch value={color}>
+                </color-swatch>
+              );
+            })
+          }
           <color-picker
             uniqueId="secondary_color"
             label="Secondary Color"

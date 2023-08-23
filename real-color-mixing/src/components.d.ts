@@ -18,6 +18,11 @@ export namespace Components {
     }
     interface HomePage {
     }
+    interface TSlider {
+        "label"?: string;
+        "uniqueId": string;
+        "value": string;
+    }
 }
 declare global {
     interface HTMLColorPickerElement extends Components.ColorPicker, HTMLStencilElement {
@@ -38,10 +43,17 @@ declare global {
         prototype: HTMLHomePageElement;
         new (): HTMLHomePageElement;
     };
+    interface HTMLTSliderElement extends Components.TSlider, HTMLStencilElement {
+    }
+    var HTMLTSliderElement: {
+        prototype: HTMLTSliderElement;
+        new (): HTMLTSliderElement;
+    };
     interface HTMLElementTagNameMap {
         "color-picker": HTMLColorPickerElement;
         "color-swatch": HTMLColorSwatchElement;
         "home-page": HTMLHomePageElement;
+        "t-slider": HTMLTSliderElement;
     }
 }
 declare namespace LocalJSX {
@@ -57,10 +69,17 @@ declare namespace LocalJSX {
     }
     interface HomePage {
     }
+    interface TSlider {
+        "label"?: string;
+        "onSliderValueChange"?: (event: CustomEvent<number>) => void;
+        "uniqueId"?: string;
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "color-picker": ColorPicker;
         "color-swatch": ColorSwatch;
         "home-page": HomePage;
+        "t-slider": TSlider;
     }
 }
 export { LocalJSX as JSX };
@@ -70,6 +89,7 @@ declare module "@stencil/core" {
             "color-picker": LocalJSX.ColorPicker & JSXBase.HTMLAttributes<HTMLColorPickerElement>;
             "color-swatch": LocalJSX.ColorSwatch & JSXBase.HTMLAttributes<HTMLColorSwatchElement>;
             "home-page": LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
+            "t-slider": LocalJSX.TSlider & JSXBase.HTMLAttributes<HTMLTSliderElement>;
         }
     }
 }

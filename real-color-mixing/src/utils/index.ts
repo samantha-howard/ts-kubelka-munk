@@ -1,10 +1,9 @@
 import mixbox from "mixbox";
 import { RGB } from "./interfaces";
 
-export function kubelkaMunk(first: RGB, second: RGB): RGB {
+export function kubelkaMunk(first: RGB, second: RGB, t: number): RGB {
   const rgb1 = `rgb(${first.red}, ${first.green}, ${first.blue})`;
   const rgb2 = `rgb(${second.red}, ${second.green}, ${second.blue})`;
-  const t = 0.5;
   const mixed = mixbox.lerp(rgb1, rgb2, t);
   const result = {
     red: mixed[0],
