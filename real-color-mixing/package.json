@@ -18,7 +18,8 @@
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
     "puppeteer": "^21.1.0",
-    "rollup-plugin-node-polyfills": "^0.2.1"
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "workbox-build": "^4.3.1"
   },
   "license": "MIT",
   "dependencies": {
